@@ -1,0 +1,74 @@
+import java.util.*;
+ 
+public class Main 
+{
+ 
+    public static void main (String args[])
+    {
+        int arr[] = {1,1,1,1,4};
+        List<Integer> set11=new ArrayList<>();
+         List<Integer> set12=new ArrayList<>();
+
+       
+        
+        divideInEqualSums (arr,set11,set12);
+    }
+ 
+    private static void divideInEqualSums(int[] arr, List set11,List set12) 
+    {
+   
+        Arrays.sort(arr);
+ 
+        int i=arr.length-1;
+        
+        int sum1 = 0;
+        int sum2 = 0;
+        while (i>=0)
+        {
+            if (sum1 < sum2)
+            {
+                set11.add(arr[i]);
+               
+                sum1 += arr[i];
+            }
+            else
+            {
+                set12.add(arr[i]);
+                
+                sum2 += arr[i];
+            }
+            i--;
+        }
+        
+      
+        
+        List<Integer> list=new ArrayList<>();
+        for(i=0;i<arr.length;i++)
+        {
+            list.add(arr[i]);
+        }
+        printArrayWithSum(list);
+        if(sum1==sum2)
+        {
+        System.out.print("Set 1 = ");
+        printArrayWithSum(set11);
+                System.out.print("Set 2 = ");
+
+        printArrayWithSum(set12);
+    }
+    else 
+            System.out.print("-1 ");
+
+    }
+    static void printArrayWithSum (List set)
+    {
+        int sum1 = 0;
+        for (Object a:set)
+        {
+            sum1 += (int)a;
+            System.out.print(a+",");
+        }
+        System.out.println(" = " + sum1);
+    }
+}
+ 

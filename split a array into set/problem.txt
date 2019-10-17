@@ -1,0 +1,7 @@
+Problem: Given an array of unsorted integers, divide it into two sets, each having (arr.length/2) elements such that the sum of each set is as close to each other as possible.
+
+
+Solution: This can be done by first sorting the array (O nlogn) and then applying the following algorithm:
+Maintain running sums for each set.
+Add current largest element into the set with smaller sum and update running sums.
+If any set reaches capacity n/2, then simply put remaining elements into the other set.
