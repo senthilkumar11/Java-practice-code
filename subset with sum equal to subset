@@ -1,0 +1,36 @@
+import java.io.IOException;
+import java.util.*;
+  
+class Main 
+{ 
+
+    static void printSubsets(int set[],int val) 
+    { 
+        int n = set.length,sum; 
+        ArrayList<ArrayList<Integer>> allsets=new ArrayList();
+        for (int i = 0; i < (1<<n); i++) 
+        { 
+         
+         ArrayList<Integer> temp=new ArrayList();
+         sum=0;
+            for (int j = 0; j <n; j++) 
+            {
+               if( (i & (1 << j))>0)
+               {
+                   sum+=set[j];
+                temp.add(set[j]);
+               }
+            }
+            if(sum==val)
+            allsets.add(temp);
+        } 
+        for(List list:allsets)
+        System.out.println(list);
+    } 
+  
+    public static void main(String[] args) 
+    { 
+        int set[] = { 2, 3,5,8,10}; 
+        printSubsets(set,10); 
+    } 
+} 
